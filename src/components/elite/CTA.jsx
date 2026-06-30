@@ -5,27 +5,51 @@ import RevealWrap from "@/components/elite/RevealWrap";
 
 export default function CTA({ onBooking }) {
   return (
-    <section className="relative py-28 md:py-40 bg-void overflow-hidden">
-      {/* Aurora blobs */}
+    <section className="relative py-28 md:py-44 bg-void overflow-hidden">
+      {/* Heavy aurora burst */}
       <motion.div
-        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="aurora-blob w-[500px] h-[500px] bg-[#1A44D1]/20 top-[-20%] left-[-10%]"
+        animate={{ x: [0, 50, -30, 0], y: [0, -40, 20, 0], scale: [1, 1.2, 0.9, 1] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        className="aurora-blob blob-blur w-[700px] h-[700px] bg-[#1A44D1]/25"
+        style={{ top: "-30%", left: "-15%" }}
       />
       <motion.div
-        animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="aurora-blob w-[400px] h-[400px] bg-[#C9960C]/15 bottom-[-10%] right-[-5%]"
+        animate={{ x: [0, -40, 30, 0], y: [0, 50, -20, 0], scale: [1, 0.85, 1.1, 1] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+        className="aurora-blob blob-blur w-[600px] h-[600px] bg-[#C9960C]/20"
+        style={{ bottom: "-20%", right: "-10%" }}
       />
+      <motion.div
+        animate={{ x: [0, 30, -20, 0], y: [0, -30, 40, 0] }}
+        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 6 }}
+        className="aurora-blob blob-blur w-[400px] h-[400px] bg-[#6B21A8]/18"
+        style={{ top: "30%", right: "20%" }}
+      />
+
+      {/* Central spotlight */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(201,150,12,0.08)_0%,transparent_70%)]" />
+
+      {/* Scan lines */}
+      <div className="absolute inset-0 scanline opacity-20 pointer-events-none" />
+
+      {/* Light streaks */}
+      {[20, 50, 80].map((left, i) => (
+        <motion.div key={i}
+          animate={{ opacity: [0.2, 0.6, 0.2], scaleY: [0.7, 1.2, 0.7] }}
+          transition={{ duration: 5 + i, repeat: Infinity, ease: "easeInOut", delay: i * 1.5 }}
+          className="light-streak"
+          style={{ top: "5%", left: `${left}%`, height: "90%" }}
+        />
+      ))}
 
       <div className="relative z-10 max-w-[900px] mx-auto px-6 md:px-10 text-center">
         <RevealWrap>
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-6 h-[0.5px] bg-gold" />
+            <div className="w-8 h-[0.5px] bg-gold" />
             <span className="text-[11px] font-semibold tracking-[0.22em] uppercase text-gold-light">Ready to Scale</span>
-            <div className="w-6 h-[0.5px] bg-gold" />
+            <div className="w-8 h-[0.5px] bg-gold" />
           </div>
-          <h2 className="font-heading text-platinum text-[clamp(40px,6vw,80px)] leading-[0.92] mb-6">
+          <h2 className="font-heading text-platinum text-[clamp(40px,6vw,88px)] leading-[0.9] mb-6 text-halo">
             Let's Build Something{" "}
             <span className="italic text-gold-gradient block">Extraordinary</span>
           </h2>
@@ -35,7 +59,7 @@ export default function CTA({ onBooking }) {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onClick={onBooking}
-              className="btn-gold flex items-center gap-2 text-[15px] px-8 py-4 rounded-full cursor-pointer">
+              className="btn-gold glow-border flex items-center gap-2 text-[15px] px-8 py-4 rounded-full cursor-pointer">
               <span className="flex items-center gap-2">
                 <Calendar size={18} strokeWidth={2} />
                 Book Free Consultation

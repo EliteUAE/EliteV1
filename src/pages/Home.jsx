@@ -14,6 +14,7 @@ import CTA from "@/components/elite/CTA";
 import FAQ from "@/components/elite/FAQ";
 import Footer from "@/components/elite/Footer";
 import BookingModal from "@/components/elite/BookingModal";
+import BackgroundEffects from "@/components/elite/BackgroundEffects";
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <div className="bg-void overflow-x-hidden">
+      <BackgroundEffects />
       <Navbar onBooking={openBooking} />
       <Hero onBooking={openBooking} />
       <Marquee />

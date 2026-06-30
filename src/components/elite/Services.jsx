@@ -72,7 +72,7 @@ export default function Services({ onBooking }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
           {SERVICES.map((s, i) => (
             <RevealWrap key={i} delay={i * 0.07} className={s.span}>
-              <div className={`glass rounded-2xl p-8 h-full group hover:border-gold/20 transition-all duration-400 hover:-translate-y-1 cursor-default relative overflow-hidden ${s.span}`}>
+              <div className={`glass card-glow rounded-2xl p-8 h-full group hover:border-gold/20 transition-all duration-400 hover:-translate-y-1 cursor-default relative overflow-hidden ${s.span}`}>
                 {/* Gradient accent */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${s.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 <div className="relative z-10">

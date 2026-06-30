@@ -45,6 +45,7 @@ export default function Stats() {
   return (
     <section className="relative py-28 md:py-36 bg-void overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,150,12,0.05)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 scanline opacity-20 pointer-events-none" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <RevealWrap className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-4">
