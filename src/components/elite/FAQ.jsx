@@ -38,8 +38,8 @@ function FAQItem({ q, a, open, onToggle }) {
         className="w-full flex items-center justify-between gap-6 py-6 text-left group cursor-pointer"
         aria-expanded={open}
       >
-        <span className="font-heading text-platinum text-lg italic group-hover:text-gold-light transition-colors duration-200">{q}</span>
-        <span className="flex-shrink-0 w-8 h-8 rounded-full glass flex items-center justify-center text-gold transition-transform duration-300" style={{ transform: open ? "rotate(0deg)" : "rotate(0deg)" }}>
+        <span className="font-heading text-platinum text-lg italic group-hover:text-electric-light transition-colors duration-200">{q}</span>
+        <span className="flex-shrink-0 w-8 h-8 rounded-full glass flex items-center justify-center text-electric transition-transform duration-300" style={{ transform: open ? "rotate(0deg)" : "rotate(0deg)" }}>
           {open ? <Minus size={16} strokeWidth={2} /> : <Plus size={16} strokeWidth={2} />}
         </span>
       </button>
@@ -67,12 +67,12 @@ export default function FAQ() {
       <div className="max-w-[800px] mx-auto px-6 md:px-10">
         <RevealWrap className="text-center mb-14">
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-6 h-[0.5px] bg-gold" />
-            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gold-light">FAQ</span>
-            <div className="w-6 h-[0.5px] bg-gold" />
+            <div className="w-6 h-[0.5px] bg-electric" />
+            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-electric-light">FAQ</span>
+            <div className="w-6 h-[0.5px] bg-electric" />
           </div>
           <h2 className="font-heading text-platinum text-[clamp(32px,4vw,52px)] leading-tight">
-            Common <span className="italic text-gold-gradient">Questions</span>
+            Common <span className="italic text-brand-gradient">Questions</span>
           </h2>
         </RevealWrap>
 

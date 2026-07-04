@@ -7,6 +7,7 @@ import { ArrowRight, ArrowUpRight, MapPin, Briefcase, Mail, Users, TrendingUp, G
 import Navbar from "@/components/elite/Navbar";
 import Footer from "@/components/elite/Footer";
 import BookingModal from "@/components/elite/BookingModal";
+import ApplicationModal from "@/components/elite/ApplicationModal";
 import RevealWrap from "@/components/elite/RevealWrap";
 
 const CAREERS_HERO = "https://media.db.com/images/public/6a4321e700517b6f8766408e/e67dfb084_generated_image.png";
@@ -40,6 +41,13 @@ const BENEFITS = [
 
 export default function Careers() {
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [applyOpen, setApplyOpen] = useState(false);
+  const [applyPosition, setApplyPosition] = useState("");
+
+  const openApplication = (position) => {
+    setApplyPosition(position || "");
+    setApplyOpen(true);
+  };
 
   return (
     <div className="bg-bone overflow-x-hidden">
@@ -176,9 +184,10 @@ export default function Careers() {
           <div className="flex flex-col gap-3 mt-14">
             {POSITIONS.map((pos, i) => (
               <RevealWrap key={pos.title} delay={Math.min(i * 0.06, 0.3)}>
-                <a
-                  href="mailto:careers@elitepartnersus.com"
-                  className="group flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white border border-black/[0.06] rounded-2xl p-6 md:p-7 hover:border-cobalt/20 hover:bg-cobalt/[0.02] transition-all duration-300"
+                <button
+                  type="button"
+                  onClick={() => openApplication(pos.title)}
+                  className="group w-full text-left flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white border border-black/[0.06] rounded-2xl p-6 md:p-7 hover:border-cobalt/20 hover:bg-cobalt/[0.02] transition-all duration-300 cursor-pointer"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-11 h-11 rounded-xl bg-cobalt/10 border border-cobalt/20 flex items-center justify-center flex-shrink-0">
@@ -201,7 +210,7 @@ export default function Careers() {
                     </div>
                     <ArrowUpRight size={18} className="text-ash group-hover:text-cobalt transition-colors duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform hidden md:block" />
                   </div>
-                </a>
+                </button>
               </RevealWrap>
             ))}
           </div>
@@ -249,13 +258,14 @@ export default function Careers() {
               We're always looking for exceptional people. Send us your resume and tell us how you'd
               make an impact — we read every single one.
             </p>
-            <a
-              href="mailto:careers@elitepartnersus.com?subject=General Application"
-              className="btn-fill inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-cobalt hover:bg-cobalt-light px-8 py-4 rounded-full transition-all duration-300 tracking-wide hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(26,68,209,0.25)]"
+            <button
+              type="button"
+              onClick={() => openApplication("")}
+              className="btn-fill inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-cobalt hover:bg-cobalt-light px-8 py-4 rounded-full transition-all duration-300 tracking-wide hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(26,68,209,0.25)] cursor-pointer"
             >
               <Send size={16} />
               Send Your Resume
-            </a>
+            </button>
             <div className="flex items-center justify-center gap-2 mt-8 text-[13px] text-ash">
               <Mail size={13} />
               <a href="mailto:careers@elitepartnersus.com" className="text-ash border-b border-black/10 hover:text-cobalt hover:border-cobalt transition-colors">
@@ -268,6 +278,7 @@ export default function Careers() {
 
       <Footer onBooking={() => setBookingOpen(true)} />
       <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
+      <ApplicationModal open={applyOpen} onClose={() => setApplyOpen(false)} position={applyPosition} />
     </div>
   );
 }

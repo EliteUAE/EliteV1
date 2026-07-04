@@ -16,7 +16,7 @@ export default function CTA({ onBooking }) {
       <motion.div
         animate={{ x: [0, -40, 30, 0], y: [0, 50, -20, 0], scale: [1, 0.85, 1.1, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-        className="aurora-blob blob-blur w-[600px] h-[600px] bg-[#C9960C]/20"
+        className="aurora-blob blob-blur w-[600px] h-[600px] bg-[#2E63FF]/20"
         style={{ bottom: "-20%", right: "-10%" }}
       />
       <motion.div
@@ -27,7 +27,7 @@ export default function CTA({ onBooking }) {
       />
 
       {/* Central spotlight */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(201,150,12,0.08)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(46,99,255,0.08)_0%,transparent_70%)]" />
 
       {/* Scan lines */}
       <div className="absolute inset-0 scanline opacity-20 pointer-events-none" />
@@ -45,13 +45,13 @@ export default function CTA({ onBooking }) {
       <div className="relative z-10 max-w-[900px] mx-auto px-6 md:px-10 text-center">
         <RevealWrap>
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-8 h-[0.5px] bg-gold" />
-            <span className="text-[11px] font-semibold tracking-[0.22em] uppercase text-gold-light">Ready to Scale</span>
-            <div className="w-8 h-[0.5px] bg-gold" />
+            <div className="w-8 h-[0.5px] bg-electric" />
+            <span className="text-[11px] font-semibold tracking-[0.22em] uppercase text-electric-light">Ready to Scale</span>
+            <div className="w-8 h-[0.5px] bg-electric" />
           </div>
           <h2 className="font-heading text-platinum text-[clamp(40px,6vw,88px)] leading-[0.9] mb-6 text-halo">
             Let's Build Something{" "}
-            <span className="italic text-gold-gradient block">Extraordinary</span>
+            <span className="italic text-brand-gradient block">Extraordinary</span>
           </h2>
           <p className="text-[18px] text-[#8A8899] leading-[1.75] max-w-[520px] mx-auto mb-10 font-light">
             Book a free 30-minute consultation. No pitch, no pressure — just an honest
@@ -59,14 +59,14 @@ export default function CTA({ onBooking }) {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onClick={onBooking}
-              className="btn-gold glow-border flex items-center gap-2 text-[15px] px-8 py-4 rounded-full cursor-pointer">
+              className="btn-primary glow-border flex items-center gap-2 text-[15px] px-8 py-4 rounded-full cursor-pointer">
               <span className="flex items-center gap-2">
                 <Calendar size={18} strokeWidth={2} />
                 Book Free Consultation
               </span>
             </button>
             <a href="mailto:hello@elitepartners.ae"
-              className="btn-ghost-gold flex items-center gap-2 text-[14px] px-8 py-4 rounded-full font-medium cursor-pointer">
+              className="btn-ghost flex items-center gap-2 text-[14px] px-8 py-4 rounded-full font-medium cursor-pointer">
               Email Us
               <ArrowRight size={15} strokeWidth={2} />
             </a>

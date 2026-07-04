@@ -35,8 +35,8 @@ function Counter({ value, suffix, delay }) {
     return () => observer.disconnect();
   }, [value, delay]);
   return (
-    <span ref={ref} className="text-gold-gradient font-heading text-5xl md:text-6xl tracking-tight">
-      {display}<span className="text-gold-light">{suffix}</span>
+    <span ref={ref} className="text-brand-gradient font-heading text-5xl md:text-6xl tracking-tight">
+      {display}<span className="text-electric-light">{suffix}</span>
     </span>
   );
 }
@@ -44,17 +44,17 @@ function Counter({ value, suffix, delay }) {
 export default function Stats() {
   return (
     <section className="relative py-28 md:py-36 bg-void overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,150,12,0.05)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(46,99,255,0.05)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute inset-0 scanline opacity-20 pointer-events-none" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <RevealWrap className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-6 h-[0.5px] bg-gold" />
-            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gold-light">By the Numbers</span>
-            <div className="w-6 h-[0.5px] bg-gold" />
+            <div className="w-6 h-[0.5px] bg-electric" />
+            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-electric-light">By the Numbers</span>
+            <div className="w-6 h-[0.5px] bg-electric" />
           </div>
           <h2 className="font-heading text-platinum text-[clamp(32px,4vw,52px)] leading-tight">
-            Performance That <span className="italic text-gold-gradient">Speaks</span>
+            Performance That <span className="italic text-brand-gradient">Speaks</span>
           </h2>
         </RevealWrap>
 

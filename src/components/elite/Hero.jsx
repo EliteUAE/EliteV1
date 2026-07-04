@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Calendar, ChevronDown } from "lucide-react";
+import heroImage from "@/assets/hero-handshake.png";
 
 const metrics = [
   { value: "200", suffix: "+", label: "Businesses Served" },
@@ -34,8 +35,8 @@ function AnimatedCounter({ value, suffix, delay }) {
     return () => observer.disconnect();
   }, [value, delay]);
   return (
-    <span ref={ref} className="text-gold-gradient font-heading text-4xl md:text-5xl lg:text-6xl tracking-tight">
-      {display}<span className="text-gold-light">{suffix}</span>
+    <span ref={ref} className="text-brand-gradient font-heading text-4xl md:text-5xl lg:text-6xl tracking-tight">
+      {display}<span className="text-electric-light">{suffix}</span>
     </span>
   );
 }
@@ -49,11 +50,55 @@ export default function Hero({ onBooking }) {
   const contentY = useTransform(scrollY, [0, 600], [0, 80]);
   const contentOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
+  // Ambient hero photograph — dissolves into the aurora as the user scrolls past
+  const imageOpacity = useTransform(scrollY, [0, 550], [0.55, 0]);
+  const imageScale = useTransform(scrollY, [0, 550], [1, 1.22]);
+  const imageY = useTransform(scrollY, [0, 550], [0, -70]);
+  const imageBlurPx = useTransform(scrollY, [0, 550], [0, 22]);
+  const imageFilter = useTransform(imageBlurPx, (v) => `blur(${v}px)`);
+
+  // Futuristic scan-wipe that sweeps down and erases the photo as it dissolves
+  const sweepTop = useTransform(scrollY, [0, 600], ["-5%", "105%"]);
+  const sweepOpacity = useTransform(scrollY, [0, 100, 420, 560], [0, 1, 1, 0]);
+
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-end overflow-hidden bg-void">
 
       {/* ── Deep background radial ── */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(26,68,209,0.12)_0%,transparent_70%)]" />
+
+      {/* ── Ambient hero photograph — fades in on load, dissolves away on scroll ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.6, delay: 0.1, ease: "easeOut" }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        <motion.div
+          style={{ opacity: imageOpacity, scale: imageScale, y: imageY, filter: imageFilter }}
+          className="absolute inset-0 overflow-hidden"
+        >
+          <img
+            src={heroImage}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-[62%_42%] grayscale-[35%] contrast-[1.08] animate-ken-burns"
+          />
+          {/* Brand duotone wash */}
+          <div className="absolute inset-0 bg-gradient-to-br from-electric/25 via-transparent to-emerald/20 mix-blend-color" />
+          {/* Legibility gradient — solid where copy sits, opens up toward the photo */}
+          <div className="absolute inset-0 bg-gradient-to-r from-void from-[5%] via-void/70 via-45% to-void/10" />
+          {/* Fade into the sections above/below */}
+          <div className="absolute inset-0 bg-gradient-to-b from-void/50 via-transparent to-void" />
+        </motion.div>
+
+        {/* Futuristic scan-wipe sweeping the photo away */}
+        <motion.div
+          style={{ top: sweepTop, opacity: sweepOpacity }}
+          className="absolute left-0 right-0 h-px z-[1]"
+        >
+          <div className="h-full w-full bg-gradient-to-r from-transparent via-electric-light to-transparent shadow-[0_0_28px_4px_rgba(46,99,255,0.55)]" />
+        </motion.div>
+      </motion.div>
 
       {/* ── Aurora blobs with motion blur ── */}
       <motion.div style={{ y: blob1Y }}
@@ -71,7 +116,7 @@ export default function Hero({ onBooking }) {
         <motion.div
           animate={{ x: [0, -50, 40, 0], y: [0, 60, -30, 0], scale: [1, 0.9, 1.1, 1] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-          className="aurora-blob blob-blur w-[600px] h-[600px] bg-[#C9960C]/18"
+          className="aurora-blob blob-blur w-[600px] h-[600px] bg-[#2E63FF]/18"
           style={{ top: "5%", right: "-8%" }}
         />
       </motion.div>
@@ -81,14 +126,14 @@ export default function Hero({ onBooking }) {
         <motion.div
           animate={{ x: [0, 30, -20, 0], y: [0, 30, -40, 0], scale: [1, 1.08, 0.98, 1] }}
           transition={{ duration: 26, repeat: Infinity, ease: "easeInOut", delay: 6 }}
-          className="aurora-blob blob-blur w-[500px] h-[500px] bg-[#6B21A8]/20"
+          className="aurora-blob blob-blur w-[500px] h-[500px] bg-[#12B886]/22"
           style={{ bottom: "5%", left: "25%" }}
         />
-        {/* Extra small warm blob */}
+        {/* Extra small emerald shimmer blob */}
         <motion.div
           animate={{ x: [0, -40, 20, 0], y: [0, -20, 40, 0] }}
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="aurora-blob blob-blur w-[300px] h-[300px] bg-[#E8B84B]/10"
+          className="aurora-blob blob-blur w-[300px] h-[300px] bg-[#3DDC9B]/12"
           style={{ top: "40%", left: "55%" }}
         />
       </motion.div>
@@ -131,9 +176,9 @@ export default function Hero({ onBooking }) {
           <motion.div
             animate={{ width: ["2rem", "3rem", "2rem"] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="h-[0.5px] bg-gold"
+            className="h-[0.5px] bg-electric"
           />
-          <span className="text-[11px] font-semibold tracking-[0.22em] uppercase text-gold-light">
+          <span className="text-[11px] font-semibold tracking-[0.22em] uppercase text-electric-light">
             Contact Centers · Consulting · Web & IT · Lead Generation
           </span>
         </motion.div>
@@ -150,10 +195,10 @@ export default function Hero({ onBooking }) {
           <span className="block font-heading text-platinum leading-[0.9] tracking-[-0.01em] text-[clamp(52px,8vw,104px)]">
             Answered.
           </span>
-          <span className="block font-heading italic text-gold-gradient leading-[0.95] text-[clamp(52px,8vw,104px)]">
+          <span className="block font-heading italic text-brand-gradient leading-[0.95] text-[clamp(52px,8vw,104px)]">
             Every Lead
           </span>
-          <span className="block font-heading italic text-gold-gradient leading-[0.95] text-[clamp(52px,8vw,104px)]">
+          <span className="block font-heading italic text-brand-gradient leading-[0.95] text-[clamp(52px,8vw,104px)]">
             Chased.
           </span>
         </motion.h1>
@@ -175,14 +220,14 @@ export default function Hero({ onBooking }) {
           className="flex flex-col sm:flex-row items-start gap-3 mt-10"
         >
           <button onClick={onBooking}
-            className="btn-gold glow-border flex items-center gap-2 text-[14px] px-7 py-4 rounded-full cursor-pointer">
+            className="btn-primary glow-border flex items-center gap-2 text-[14px] px-7 py-4 rounded-full cursor-pointer">
             <span className="flex items-center gap-2">
               <Calendar size={16} strokeWidth={2} />
               Book Free Consultation
             </span>
           </button>
           <a href="#services"
-            className="btn-ghost-gold flex items-center gap-2 text-[14px] px-7 py-4 rounded-full font-medium cursor-pointer">
+            className="btn-ghost flex items-center gap-2 text-[14px] px-7 py-4 rounded-full font-medium cursor-pointer">
             See What We Do
             <ArrowRight size={15} strokeWidth={2} />
           </a>
@@ -215,7 +260,7 @@ export default function Hero({ onBooking }) {
       >
         <span className="text-[10px] tracking-[0.2em] uppercase text-[#8A8899] [writing-mode:vertical-rl] mb-3">Scroll</span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.4, repeat: Infinity }}>
-          <ChevronDown size={16} className="text-gold" />
+          <ChevronDown size={16} className="text-electric" />
         </motion.div>
       </motion.div>
     </section>

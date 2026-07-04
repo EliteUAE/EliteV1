@@ -17,7 +17,7 @@ const SERVICES = [
     subtitle: "Strategy & Growth",
     desc: "Operations audits, workflow optimization, and growth roadmaps tailored to your business goals.",
     span: "",
-    accent: "from-[#C9960C]/15 to-transparent",
+    accent: "from-[#2E63FF]/15 to-transparent",
   },
   {
     icon: Code2,
@@ -41,7 +41,7 @@ const SERVICES = [
     subtitle: "3 Continents",
     desc: "Offshore teams in strategic time zones. Follow-the-sun coverage so you're never off.",
     span: "lg:col-span-2",
-    accent: "from-[#C9960C]/10 to-transparent",
+    accent: "from-[#2E63FF]/10 to-transparent",
   },
 ];
 
@@ -53,16 +53,16 @@ export default function Services({ onBooking }) {
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <RevealWrap>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-[0.5px] bg-gold" />
-            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gold-light">What We Do</span>
+            <div className="w-8 h-[0.5px] bg-electric" />
+            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-electric-light">What We Do</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <h2 className="font-heading text-platinum leading-[0.95] text-[clamp(36px,4.5vw,60px)]">
               Four Pillars.{" "}
-              <span className="italic text-gold-gradient">One Team.</span>
+              <span className="italic text-brand-gradient">One Team.</span>
             </h2>
             <button onClick={onBooking}
-              className="btn-gold text-[13px] px-6 py-3 rounded-full self-start md:self-auto cursor-pointer">
+              className="btn-primary text-[13px] px-6 py-3 rounded-full self-start md:self-auto cursor-pointer">
               <span>Get Started</span>
             </button>
           </div>
@@ -72,14 +72,14 @@ export default function Services({ onBooking }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
           {SERVICES.map((s, i) => (
             <RevealWrap key={i} delay={i * 0.07} className={s.span}>
-              <div className={`glass card-glow rounded-2xl p-8 h-full group hover:border-gold/20 transition-all duration-400 hover:-translate-y-1 cursor-default relative overflow-hidden ${s.span}`}>
+              <div className={`glass card-glow rounded-2xl p-8 h-full group hover:border-electric/20 transition-all duration-400 hover:-translate-y-1 cursor-default relative overflow-hidden ${s.span}`}>
                 {/* Gradient accent */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${s.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-xl glass-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <s.icon size={22} className="text-gold" strokeWidth={1.5} />
+                  <div className="w-12 h-12 rounded-xl glass-brand flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <s.icon size={22} className="text-electric" strokeWidth={1.5} />
                   </div>
-                  <div className="text-[10px] font-semibold tracking-[0.16em] uppercase text-gold mb-2">{s.subtitle}</div>
+                  <div className="text-[10px] font-semibold tracking-[0.16em] uppercase text-electric mb-2">{s.subtitle}</div>
                   <h3 className="font-heading text-platinum text-xl md:text-2xl italic mb-3">{s.title}</h3>
                   <p className="text-[14px] text-[#8A8899] leading-[1.7] font-light">{s.desc}</p>
                 </div>

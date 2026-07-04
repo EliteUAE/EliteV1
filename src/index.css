@@ -6,39 +6,39 @@
 
 @layer base {
   :root {
-    --background: 240 10% 4%;
-    --foreground: 40 20% 92%;
-    --card: 240 10% 7%;
-    --card-foreground: 40 20% 92%;
-    --popover: 240 10% 7%;
-    --popover-foreground: 40 20% 92%;
-    --primary: 42 88% 42%;
+    --background: 240 6% 4%;
+    --foreground: 220 14% 93%;
+    --card: 240 6% 7%;
+    --card-foreground: 220 14% 93%;
+    --popover: 240 6% 7%;
+    --popover-foreground: 220 14% 93%;
+    --primary: 227 100% 59%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 8% 14%;
-    --secondary-foreground: 40 20% 85%;
-    --muted: 240 8% 14%;
-    --muted-foreground: 240 5% 55%;
-    --accent: 240 8% 14%;
-    --accent-foreground: 40 20% 92%;
+    --secondary: 240 5% 14%;
+    --secondary-foreground: 220 10% 85%;
+    --muted: 240 5% 14%;
+    --muted-foreground: 240 4% 58%;
+    --accent: 240 5% 14%;
+    --accent-foreground: 220 14% 93%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 8% 14%;
-    --input: 240 8% 14%;
-    --ring: 42 88% 42%;
-    --chart-1: 42 88% 42%;
-    --chart-2: 173 58% 39%;
+    --border: 240 5% 14%;
+    --input: 240 5% 14%;
+    --ring: 227 100% 59%;
+    --chart-1: 227 100% 59%;
+    --chart-2: 161 74% 39%;
     --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-4: 152 69% 61%;
+    --chart-5: 258 90% 66%;
     --radius: 0.75rem;
-    --sidebar-background: 240 10% 7%;
-    --sidebar-foreground: 40 20% 85%;
-    --sidebar-primary: 42 88% 42%;
+    --sidebar-background: 240 6% 7%;
+    --sidebar-foreground: 220 10% 85%;
+    --sidebar-primary: 227 100% 59%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 8% 14%;
-    --sidebar-accent-foreground: 40 20% 85%;
-    --sidebar-border: 240 8% 14%;
-    --sidebar-ring: 42 88% 42%;
+    --sidebar-accent: 240 5% 14%;
+    --sidebar-accent-foreground: 220 10% 85%;
+    --sidebar-border: 240 5% 14%;
+    --sidebar-ring: 227 100% 59%;
   }
 }
 
@@ -48,8 +48,8 @@
   }
   body {
     @apply bg-void text-platinum font-body;
-    background-color: #08080F;
-    color: #E8E4E0;
+    background-color: #0A0A0D;
+    color: #F2F3F5;
     font-family: 'Jost', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -67,21 +67,26 @@
   border: 1px solid rgba(255,255,255,0.07);
 }
 
-.glass-gold {
-  background: linear-gradient(135deg, rgba(201,150,12,0.08) 0%, rgba(232,184,75,0.04) 100%);
+.glass-brand {
+  background: linear-gradient(135deg, rgba(46,99,255,0.08) 0%, rgba(18,184,134,0.05) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(201,150,12,0.2);
+  border: 1px solid rgba(46,99,255,0.2);
 }
 
-/* ── Gold shimmer text ── */
-.text-gold-gradient {
-  background: linear-gradient(135deg, #C9960C 0%, #F5D78E 40%, #E8B84B 60%, #C9960C 100%);
+/* ── Brand shimmer text (electric blue → emerald) ── */
+.text-brand-gradient {
+  background: linear-gradient(135deg, #5B8CFF 0%, #2E63FF 35%, #12B886 70%, #5B8CFF 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shimmer 4s linear infinite;
+  /* Tight line-heights on display type clip the gradient before descenders (y, g, Q)
+     — pad the background's paint area so it reaches past the baseline without
+     shifting layout (block usages get the margin cancel; inline usages ignore it). */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 
 /* ── Aurora blobs ── */
@@ -103,53 +108,53 @@
   z-index: 1;
 }
 
-/* ── Gold button fill ── */
-.btn-gold {
+/* ── Primary button fill (electric blue → emerald) ── */
+.btn-primary {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #C9960C, #E8B84B);
-  color: #08080F;
+  background: linear-gradient(135deg, #2E63FF, #12B886);
+  color: #F2F3F5;
   font-weight: 600;
   letter-spacing: 0.04em;
   transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
   cursor: pointer;
 }
-.btn-gold::after {
+.btn-primary::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #E8B84B, #F5D78E);
+  background: linear-gradient(135deg, #5B8CFF, #3DDC9B);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.btn-gold:hover::after { opacity: 1; }
-.btn-gold:hover { box-shadow: 0 0 40px rgba(201,150,12,0.35), 0 8px 32px rgba(0,0,0,0.4); transform: translateY(-2px); }
-.btn-gold > * { position: relative; z-index: 1; }
+.btn-primary:hover::after { opacity: 1; }
+.btn-primary:hover { box-shadow: 0 0 40px rgba(46,99,255,0.35), 0 8px 32px rgba(0,0,0,0.4); transform: translateY(-2px); }
+.btn-primary > * { position: relative; z-index: 1; }
 
 /* ── Ghost button ── */
-.btn-ghost-gold {
-  border: 1px solid rgba(201,150,12,0.3);
-  color: #E8B84B;
+.btn-ghost {
+  border: 1px solid rgba(91,140,255,0.3);
+  color: #5B8CFF;
   background: transparent;
   transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
   cursor: pointer;
 }
-.btn-ghost-gold:hover {
-  background: rgba(201,150,12,0.08);
-  border-color: rgba(201,150,12,0.6);
+.btn-ghost:hover {
+  background: rgba(46,99,255,0.08);
+  border-color: rgba(46,99,255,0.6);
   transform: translateY(-2px);
 }
 
 /* ── Section divider ── */
-.divider-gold {
+.divider-brand {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201,150,12,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(46,99,255,0.3), transparent);
 }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #08080F; }
-::-webkit-scrollbar-thumb { background: rgba(201,150,12,0.3); border-radius: 2px; }
+::-webkit-scrollbar-track { background: #0A0A0D; }
+::-webkit-scrollbar-thumb { background: rgba(46,99,255,0.3); border-radius: 2px; }
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
@@ -169,13 +174,13 @@
 /* ── Radial spotlight ── */
 .spotlight {
   background: radial-gradient(ellipse 60% 40% at 50% 50%,
-    rgba(201,150,12,0.12) 0%,
-    rgba(201,150,12,0.04) 40%,
+    rgba(46,99,255,0.14) 0%,
+    rgba(18,184,134,0.05) 40%,
     transparent 70%);
   pointer-events: none;
 }
 
-/* ── Animated gold border glow ── */
+/* ── Animated brand border glow ── */
 .glow-border {
   position: relative;
 }
@@ -184,7 +189,7 @@
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(201,150,12,0.4), rgba(232,184,75,0.1), rgba(201,150,12,0.4));
+  background: linear-gradient(135deg, rgba(46,99,255,0.4), rgba(18,184,134,0.15), rgba(46,99,255,0.4));
   background-size: 200% 200%;
   animation: shimmer 4s linear infinite;
   z-index: -1;
@@ -195,7 +200,7 @@
 .light-streak {
   position: absolute;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(201,150,12,0.4), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(91,140,255,0.45), transparent);
   animation: float-slow 8s ease-in-out infinite;
   pointer-events: none;
 }
@@ -215,15 +220,15 @@
 /* ── Halo glow behind text ── */
 .text-halo {
   text-shadow:
-    0 0 80px rgba(201,150,12,0.3),
-    0 0 160px rgba(201,150,12,0.15),
-    0 0 240px rgba(201,150,12,0.08);
+    0 0 80px rgba(46,99,255,0.3),
+    0 0 160px rgba(18,184,134,0.15),
+    0 0 240px rgba(46,99,255,0.08);
 }
 
-/* ── Gold glow card ── */
+/* ── Brand glow card ── */
 .card-glow:hover {
   box-shadow:
-    0 0 0 1px rgba(201,150,12,0.2),
+    0 0 0 1px rgba(46,99,255,0.2),
     0 8px 32px rgba(0,0,0,0.4),
-    0 0 60px rgba(201,150,12,0.08);
+    0 0 60px rgba(18,184,134,0.1);
 }

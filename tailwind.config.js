@@ -12,20 +12,23 @@ module.exports = {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-  			// Dark luxury palette
-  			void: '#08080F',
-  			surface: '#0F0F1A',
-  			elevated: '#161625',
-  			gold: '#C9960C',
-  			'gold-light': '#E8B84B',
-  			'gold-pale': '#F5D78E',
-  			platinum: '#E8E4E0',
+  			// Deep charcoal enterprise palette
+  			void: '#0A0A0D',
+  			surface: '#111116',
+  			elevated: '#17171E',
+  			electric: '#2E63FF',
+  			'electric-light': '#5B8CFF',
+  			'electric-pale': '#A9C4FF',
+  			emerald: '#12B886',
+  			'emerald-light': '#3DDC9B',
+  			'emerald-pale': '#8FF0C9',
+  			platinum: '#F2F3F5',
   			// Legacy compat
   			bone: '#F2F2F7',
   			obsidian: '#121212',
   			cobalt: '#1A44D1',
   			'cobalt-light': '#2B5CE8',
-  			ash: '#767676',
+  			ash: '#8A8B93',
   			sand: '#E5E0D8',
   			card: {
   				DEFAULT: 'hsl(var(--card))',

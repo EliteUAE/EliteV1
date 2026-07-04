@@ -17,7 +17,7 @@ export default function BookingModal({ open, onClose }) {
 
   const handleClose = () => { onClose(); setTimeout(() => setSent(false), 400); };
 
-  const field = "w-full bg-elevated border border-white/[0.07] rounded-xl px-4 py-3 text-platinum text-[14px] placeholder:text-[#8A8899]/50 focus:outline-none focus:border-gold/40 focus:ring-1 focus:ring-gold/20 transition-all duration-200 font-light";
+  const field = "w-full bg-elevated border border-white/[0.07] rounded-xl px-4 py-3 text-platinum text-[14px] placeholder:text-[#8A8899]/50 focus:outline-none focus:border-electric/40 focus:ring-1 focus:ring-electric/20 transition-all duration-200 font-light";
 
   return (
     <AnimatePresence>
@@ -36,15 +36,15 @@ export default function BookingModal({ open, onClose }) {
             animate={{ scale: 1, y: 0, opacity: 1 }}
             exit={{ scale: 0.95, y: 20, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-lg glass-gold rounded-3xl overflow-hidden"
-            style={{ border: "1px solid rgba(201,150,12,0.15)" }}
+            className="relative w-full max-w-lg glass-brand rounded-3xl overflow-hidden"
+            style={{ border: "1px solid rgba(46,99,255,0.15)" }}
           >
             {/* Header */}
             <div className="p-8 pb-6 border-b border-white/[0.06]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl glass-gold flex items-center justify-center">
-                    <Calendar size={18} className="text-gold" strokeWidth={1.5} />
+                  <div className="w-10 h-10 rounded-xl glass-brand flex items-center justify-center">
+                    <Calendar size={18} className="text-electric" strokeWidth={1.5} />
                   </div>
                   <div>
                     <h3 className="font-heading text-platinum text-xl italic">Book a Consultation</h3>
@@ -73,14 +73,14 @@ export default function BookingModal({ open, onClose }) {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-                      className="w-16 h-16 rounded-full glass-gold flex items-center justify-center mx-auto mb-5"
+                      className="w-16 h-16 rounded-full glass-brand flex items-center justify-center mx-auto mb-5"
                     >
-                      <CheckCircle2 size={28} className="text-gold" strokeWidth={1.5} />
+                      <CheckCircle2 size={28} className="text-electric" strokeWidth={1.5} />
                     </motion.div>
                     <h4 className="font-heading text-platinum text-2xl italic mb-2">Request Received</h4>
                     <p className="text-[14px] text-[#8A8899] font-light mb-6">We'll reach out within 24 hours to confirm your consultation slot.</p>
                     <button onClick={handleClose}
-                      className="btn-gold text-[14px] px-6 py-3 rounded-full cursor-pointer">
+                      className="btn-primary text-[14px] px-6 py-3 rounded-full cursor-pointer">
                       <span>Close</span>
                     </button>
                   </motion.div>
@@ -128,7 +128,7 @@ export default function BookingModal({ open, onClose }) {
                         value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
                     </div>
                     <button type="submit" disabled={loading}
-                      className="btn-gold w-full text-[14px] py-4 rounded-xl mt-2 cursor-pointer disabled:opacity-60">
+                      className="btn-primary w-full text-[14px] py-4 rounded-xl mt-2 cursor-pointer disabled:opacity-60">
                       <span className="flex items-center justify-center gap-2">
                         {loading ? (
                           <><div className="w-4 h-4 rounded-full border-2 border-void/30 border-t-void animate-spin" /> Sending…</>

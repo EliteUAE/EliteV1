@@ -23,7 +23,7 @@ function ParticleCanvas() {
       dx: (Math.random() - 0.5) * 0.3,
       dy: (Math.random() - 0.5) * 0.3,
       alpha: Math.random() * 0.5 + 0.1,
-      gold: Math.random() > 0.6,
+      electric: Math.random() > 0.6,
     }));
 
     const draw = () => {
@@ -37,9 +37,9 @@ function ParticleCanvas() {
         if (p.y > canvas.height) p.y = 0;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.gold
-          ? `rgba(201,150,12,${p.alpha})`
-          : `rgba(232,184,75,${p.alpha * 0.4})`;
+        ctx.fillStyle = p.electric
+          ? `rgba(46,99,255,${p.alpha})`
+          : `rgba(18,184,134,${p.alpha * 0.4})`;
         ctx.fill();
       });
       animId = requestAnimationFrame(draw);
@@ -71,7 +71,7 @@ function LightBeam({ delay = 0, fromLeft = true }) {
         width: "60%",
         height: "100vh",
         background: fromLeft
-          ? "linear-gradient(105deg, transparent 40%, rgba(201,150,12,0.03) 50%, transparent 60%)"
+          ? "linear-gradient(105deg, transparent 40%, rgba(46,99,255,0.03) 50%, transparent 60%)"
           : "linear-gradient(75deg, transparent 40%, rgba(26,68,209,0.04) 50%, transparent 60%)",
         filter: "blur(2px)",
       }}

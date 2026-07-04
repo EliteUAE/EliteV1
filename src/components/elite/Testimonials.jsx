@@ -31,22 +31,22 @@ export default function Testimonials() {
 
   return (
     <section className="relative py-28 md:py-36 bg-void overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,150,12,0.05)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(46,99,255,0.05)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[900px] mx-auto px-6 md:px-10 text-center">
         <RevealWrap>
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-6 h-[0.5px] bg-gold" />
-            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gold-light">Client Stories</span>
-            <div className="w-6 h-[0.5px] bg-gold" />
+            <div className="w-6 h-[0.5px] bg-electric" />
+            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-electric-light">Client Stories</span>
+            <div className="w-6 h-[0.5px] bg-electric" />
           </div>
           <h2 className="font-heading text-platinum text-[clamp(32px,4vw,52px)] leading-tight mb-14">
-            Trusted by <span className="italic text-gold-gradient">Leaders</span>
+            Trusted by <span className="italic text-brand-gradient">Leaders</span>
           </h2>
         </RevealWrap>
 
         <div className="relative">
-          <Quote size={48} className="text-gold/10 mx-auto mb-8" strokeWidth={1} />
+          <Quote size={48} className="text-electric/10 mx-auto mb-8" strokeWidth={1} />
           <AnimatePresence mode="wait">
             <motion.div
               key={idx}
@@ -59,8 +59,8 @@ export default function Testimonials() {
                 "{TESTIMONIALS[idx].quote}"
               </blockquote>
               <div className="flex items-center justify-center gap-4">
-                <div className="w-12 h-12 rounded-full glass-gold flex items-center justify-center">
-                  <span className="font-heading text-gold font-bold text-sm">{TESTIMONIALS[idx].initials}</span>
+                <div className="w-12 h-12 rounded-full glass-brand flex items-center justify-center">
+                  <span className="font-heading text-electric font-bold text-sm">{TESTIMONIALS[idx].initials}</span>
                 </div>
                 <div className="text-left">
                   <div className="text-platinum font-medium text-sm">{TESTIMONIALS[idx].name}</div>
@@ -72,18 +72,18 @@ export default function Testimonials() {
 
           <div className="flex items-center justify-center gap-4 mt-10">
             <button onClick={prev} aria-label="Previous"
-              className="btn-ghost-gold w-10 h-10 rounded-full flex items-center justify-center cursor-pointer">
+              className="btn-ghost w-10 h-10 rounded-full flex items-center justify-center cursor-pointer">
               <ChevronLeft size={16} strokeWidth={2} />
             </button>
             <div className="flex gap-2">
               {TESTIMONIALS.map((_, i) => (
                 <button key={i} onClick={() => setIdx(i)} aria-label={`Go to slide ${i+1}`}
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === idx ? "bg-gold w-6" : "bg-white/20 hover:bg-white/40"}`}
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === idx ? "bg-electric w-6" : "bg-white/20 hover:bg-white/40"}`}
                 />
               ))}
             </div>
             <button onClick={next} aria-label="Next"
-              className="btn-ghost-gold w-10 h-10 rounded-full flex items-center justify-center cursor-pointer">
+              className="btn-ghost w-10 h-10 rounded-full flex items-center justify-center cursor-pointer">
               <ChevronRight size={16} strokeWidth={2} />
             </button>
           </div>

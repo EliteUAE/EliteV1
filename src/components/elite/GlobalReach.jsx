@@ -3,10 +3,9 @@ import RevealWrap from "@/components/elite/RevealWrap";
 import { motion } from "framer-motion";
 
 const LOCATIONS = [
-  { city: "Dubai", country: "UAE", region: "Middle East HQ", dot: { top: "38%", left: "60%" } },
-  { city: "Cairo", country: "Egypt", region: "Africa Hub", dot: { top: "42%", left: "55%" } },
-  { city: "Riyadh", country: "KSA", region: "Gulf Operations", dot: { top: "40%", left: "62%" } },
-  { city: "London", country: "UK", region: "Europe Desk", dot: { top: "28%", left: "48%" } },
+  { city: "USA", country: "Global Headquarters", region: "Global HQ", dot: { top: "42%", left: "22%" } },
+  { city: "UAE", country: "Middle East", region: "Middle East Hub", dot: { top: "40%", left: "64%" } },
+  { city: "Egypt", country: "North Africa", region: "Africa Hub", dot: { top: "50%", left: "50%" } },
 ];
 
 export default function GlobalReach() {
@@ -18,21 +17,21 @@ export default function GlobalReach() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <RevealWrap direction="left">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-[0.5px] bg-gold" />
-              <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gold-light">Global Presence</span>
+              <div className="w-8 h-[0.5px] bg-electric" />
+              <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-electric-light">Global Presence</span>
             </div>
             <h2 className="font-heading text-platinum text-[clamp(36px,4.5vw,60px)] leading-[0.95] mb-6">
               Operating Across{" "}
-              <span className="italic text-gold-gradient">3 Continents</span>
+              <span className="italic text-brand-gradient">3 Continents</span>
             </h2>
             <p className="text-[17px] leading-[1.75] text-[#8A8899] mb-10 font-light max-w-[440px]">
-              Strategic hubs across the Middle East, Africa, and Europe mean we follow
-              your customers wherever they are — and never miss a beat.
+              Strategic hubs across North America, the Middle East, and Africa mean we
+              follow your customers wherever they are — and never miss a beat.
             </p>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {LOCATIONS.map((loc, i) => (
-                <div key={i} className="glass rounded-xl p-5 group hover:border-gold/20 transition-all duration-300 cursor-default">
-                  <div className="text-[10px] font-semibold tracking-[0.14em] uppercase text-gold mb-1">{loc.region}</div>
+                <div key={i} className="glass rounded-xl p-5 group hover:border-electric/20 transition-all duration-300 cursor-default">
+                  <div className="text-[10px] font-semibold tracking-[0.14em] uppercase text-electric mb-1">{loc.region}</div>
                   <div className="font-heading text-platinum text-lg italic">{loc.city}</div>
                   <div className="text-[12px] text-[#8A8899] font-light">{loc.country}</div>
                 </div>
@@ -42,19 +41,83 @@ export default function GlobalReach() {
 
           <RevealWrap direction="right" delay={0.15}>
             {/* Decorative globe-like visual */}
-            <div className="relative aspect-square max-w-[500px] mx-auto">
+            <div className="relative aspect-square max-w-[560px] mx-auto">
+              {/* Ambient gradient-mesh glow filling the space around the rings */}
+              <div className="absolute -inset-16 rounded-full bg-[radial-gradient(circle,rgba(46,99,255,0.16)_0%,transparent_65%)] blur-2xl pointer-events-none" />
+              <div className="absolute -inset-10 rounded-full bg-[radial-gradient(circle_at_65%_60%,rgba(18,184,134,0.14)_0%,transparent_60%)] blur-2xl pointer-events-none" />
+
               <div className="absolute inset-0 rounded-full border border-white/[0.05]" />
-              <div className="absolute inset-[12%] rounded-full border border-gold/[0.08]" />
+              <div className="absolute inset-[12%] rounded-full border border-electric/[0.08]" />
               <div className="absolute inset-[24%] rounded-full border border-white/[0.04]" />
-              <div className="absolute inset-[36%] rounded-full border border-gold/[0.06]" />
+              <div className="absolute inset-[36%] rounded-full border border-electric/[0.06]" />
+
+              {/* Fine dot-grid texture for a data-viz feel */}
+              <div
+                className="absolute inset-[8%] rounded-full opacity-[0.35]"
+                style={{
+                  backgroundImage: "radial-gradient(rgba(91,140,255,0.35) 1px, transparent 1px)",
+                  backgroundSize: "18px 18px",
+                  maskImage: "radial-gradient(circle, black 55%, transparent 75%)",
+                  WebkitMaskImage: "radial-gradient(circle, black 55%, transparent 75%)",
+                }}
+              />
+
+              {/* Stylized dotted landmasses under the pins — reads as a world map, not literal cartography */}
+              <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full opacity-90">
+                <defs>
+                  <pattern id="mapDots" width="3.2" height="3.2" patternUnits="userSpaceOnUse">
+                    <circle cx="1" cy="1" r="0.55" fill="#5B8CFF" fillOpacity="0.55" />
+                  </pattern>
+                </defs>
+                {/* North America — hosts the USA hub */}
+                <path
+                  d="M4,24 Q10,14 22,15 Q32,16 34,26 Q36,35 30,42 Q26,50 17,49 Q7,46 4,36 Q2,30 4,24 Z"
+                  fill="url(#mapDots)"
+                />
+                {/* Europe / Middle East / North Africa landmass — hosts UAE + Egypt */}
+                <path
+                  d="M42,14 Q52,8 62,12 Q72,15 76,24 Q80,32 74,38 Q78,46 70,54 Q62,61 52,58 Q44,55 41,46 Q36,38 39,28 Q37,20 42,14 Z"
+                  fill="url(#mapDots)"
+                />
+              </svg>
+
               {/* Center glow */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div
                   animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-24 h-24 rounded-full bg-[radial-gradient(circle,rgba(201,150,12,0.3)_0%,transparent_70%)]"
+                  className="w-24 h-24 rounded-full bg-[radial-gradient(circle,rgba(46,99,255,0.3)_0%,transparent_70%)]"
                 />
               </div>
+
+              {/* Flight-path connections from the USA HQ hub to every other office */}
+              <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full overflow-visible">
+                <defs>
+                  <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#5B8CFF" />
+                    <stop offset="100%" stopColor="#3DDC9B" />
+                  </linearGradient>
+                </defs>
+                {[
+                  "M22,42 Q43,23 64,40",
+                  "M22,42 Q36,34 50,50",
+                ].map((d, i) => (
+                  <g key={i}>
+                    <path d={d} fill="none" stroke="url(#routeGradient)" strokeWidth="0.3" strokeOpacity="0.25" />
+                    <motion.path
+                      d={d}
+                      fill="none"
+                      stroke="url(#routeGradient)"
+                      strokeWidth="0.5"
+                      strokeLinecap="round"
+                      strokeDasharray="3 7"
+                      animate={{ strokeDashoffset: [0, -20] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: i * 0.4 }}
+                    />
+                  </g>
+                ))}
+              </svg>
+
               {/* Location dots */}
               {LOCATIONS.map((loc, i) => (
                 <motion.div
@@ -69,11 +132,11 @@ export default function GlobalReach() {
                     <motion.div
                       animate={{ scale: [1, 2, 1], opacity: [0.6, 0, 0.6] }}
                       transition={{ duration: 2, repeat: Infinity, delay: i * 0.4 }}
-                      className="absolute inset-0 w-3 h-3 rounded-full bg-gold"
+                      className="absolute inset-0 w-3 h-3 rounded-full bg-electric"
                     />
-                    <div className="w-3 h-3 rounded-full bg-gold-light shadow-[0_0_12px_rgba(201,150,12,0.6)]" />
+                    <div className="w-3 h-3 rounded-full bg-electric-light shadow-[0_0_12px_rgba(46,99,255,0.6)]" />
                     <div className="absolute left-4 top-1/2 -translate-y-1/2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <span className="text-[11px] font-medium text-gold-pale bg-elevated px-2 py-1 rounded">{loc.city}</span>
+                      <span className="text-[11px] font-medium text-electric-pale bg-elevated px-2 py-1 rounded">{loc.city}</span>
                     </div>
                   </div>
                 </motion.div>

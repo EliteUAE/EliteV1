@@ -16,31 +16,31 @@ export default function Process({ onBooking }) {
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <RevealWrap className="mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-[0.5px] bg-gold" />
-            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gold-light">How It Works</span>
+            <div className="w-8 h-[0.5px] bg-electric" />
+            <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-electric-light">How It Works</span>
           </div>
           <h2 className="font-heading text-platinum text-[clamp(36px,4.5vw,60px)] leading-[0.95] max-w-xl">
             From Day One to{" "}
-            <span className="italic text-gold-gradient">Long-Term Growth</span>
+            <span className="italic text-brand-gradient">Long-Term Growth</span>
           </h2>
         </RevealWrap>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {STEPS.map((step, i) => (
             <RevealWrap key={i} delay={i * 0.1}>
-              <div className="relative glass rounded-2xl p-8 h-full group hover:border-gold/20 transition-all duration-300 hover:-translate-y-1 cursor-default overflow-hidden">
+              <div className="relative glass rounded-2xl p-8 h-full group hover:border-electric/20 transition-all duration-300 hover:-translate-y-1 cursor-default overflow-hidden">
                 {/* Number watermark */}
                 <div className="absolute -top-4 -right-2 font-heading text-[80px] text-white/[0.03] leading-none select-none pointer-events-none">
                   {step.num}
                 </div>
                 {/* Connector line */}
                 {i < STEPS.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-2 w-4 h-[1px] bg-gold/30 z-20" />
+                  <div className="hidden lg:block absolute top-1/2 -right-2 w-4 h-[1px] bg-electric/30 z-20" />
                 )}
                 <div className="relative z-10">
-                  <div className="text-[10px] font-semibold tracking-[0.18em] uppercase text-gold mb-4">{step.num}</div>
-                  <div className="w-10 h-10 rounded-lg glass-gold flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                    <step.icon size={18} className="text-gold" strokeWidth={1.5} />
+                  <div className="text-[10px] font-semibold tracking-[0.18em] uppercase text-electric mb-4">{step.num}</div>
+                  <div className="w-10 h-10 rounded-lg glass-brand flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                    <step.icon size={18} className="text-electric" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-heading text-platinum text-xl italic mb-3">{step.title}</h3>
                   <p className="text-[14px] text-[#8A8899] leading-[1.7] font-light">{step.desc}</p>
@@ -52,7 +52,7 @@ export default function Process({ onBooking }) {
 
         <RevealWrap delay={0.4} className="mt-12 text-center">
           <button onClick={onBooking}
-            className="btn-gold text-[14px] px-8 py-4 rounded-full cursor-pointer">
+            className="btn-primary text-[14px] px-8 py-4 rounded-full cursor-pointer">
             <span>Start Your Onboarding</span>
           </button>
         </RevealWrap>

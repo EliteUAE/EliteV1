@@ -32,13 +32,14 @@ export default function Navbar({ onBooking }) {
   return (
     <>
       <motion.nav
-        initial={{ y: -20, opacity: 0 }}
+        initial={{ x: "-50%", y: -20, opacity: 0 }}
         animate={{
+          x: "-50%",
           y: visible ? 0 : (scrolled ? 100 : -80),
           opacity: visible ? 1 : 0,
         }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed z-50 left-1/2 -translate-x-1/2 transition-all duration-500 ${
+        className={`fixed z-50 left-1/2 transition-all duration-500 ${
           scrolled
             ? "bottom-6 top-auto w-[min(94vw,900px)]"
             : "top-0 bottom-auto w-full"
@@ -52,7 +53,7 @@ export default function Navbar({ onBooking }) {
           }`}
         >
           <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-            <span className="font-heading text-lg md:text-xl font-bold italic text-gold-light">Elite</span>
+            <span className="font-heading text-lg md:text-xl font-bold italic text-electric-light">Elite</span>
             <span className="font-body text-lg md:text-xl text-platinum tracking-[0.12em] uppercase font-semibold">Partners</span>
           </Link>
 
@@ -71,7 +72,7 @@ export default function Navbar({ onBooking }) {
               )
             )}
             <button onClick={onBooking}
-              className="btn-gold ml-3 text-[13px] px-5 py-2.5 rounded-full tracking-wide">
+              className="btn-primary ml-3 text-[13px] px-5 py-2.5 rounded-full tracking-wide">
               <span>Book Consultation</span>
             </button>
           </div>
@@ -100,7 +101,7 @@ export default function Navbar({ onBooking }) {
             >
               <div className="flex items-center justify-between mb-14">
                 <Link to="/" className="flex items-center gap-2">
-                  <span className="font-heading text-xl italic text-gold-light">Elite</span>
+                  <span className="font-heading text-xl italic text-electric-light">Elite</span>
                   <span className="font-body text-xl text-platinum tracking-widest uppercase font-semibold">Partners</span>
                 </Link>
                 <button onClick={() => setMobileOpen(false)} className="p-2 text-platinum cursor-pointer" aria-label="Close menu">
@@ -128,7 +129,7 @@ export default function Navbar({ onBooking }) {
               </div>
               <div className="mt-auto">
                 <button onClick={() => { setMobileOpen(false); onBooking(); }}
-                  className="btn-gold w-full text-base py-4 rounded-full tracking-wide">
+                  className="btn-primary w-full text-base py-4 rounded-full tracking-wide">
                   <span>Book Consultation</span>
                 </button>
               </div>
