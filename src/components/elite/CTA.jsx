@@ -65,7 +65,7 @@ export default function CTA({ onBooking }) {
                 Book Free Consultation
               </span>
             </button>
-            <a href="mailto:hello@elitepartners.ae"
+            <a href="mailto:hello@elitepartnersus.com"
               className="btn-ghost flex items-center gap-2 text-[14px] px-8 py-4 rounded-full font-medium cursor-pointer">
               Email Us
               <ArrowRight size={15} strokeWidth={2} />

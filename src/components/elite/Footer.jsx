@@ -12,7 +12,7 @@ const LINKS = [
 ];
 
 const CONTACT = [
-  { icon: Mail, label: "hello@elitepartners.ae" },
+  { icon: Mail, label: "hello@elitepartnersus.com" },
   { icon: Phone, label: "+971 4 000 0000" },
   { icon: MapPin, label: "Dubai, UAE" },
 ];
