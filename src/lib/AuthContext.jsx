@@ -20,10 +20,22 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const checkAppState = async () => {
+    // This app has no login-gated routes — the public-settings/auth handshake below
+    // only exists when running inside the Base44 platform runtime (which injects
+    // createAxiosClient as a global). Outside that runtime, skip straight to
+    // "public, unauthenticated" instead of throwing.
+    if (typeof createAxiosClient === 'undefined') {
+      setIsLoadingPublicSettings(false);
+      setIsLoadingAuth(false);
+      setIsAuthenticated(false);
+      setAuthChecked(true);
+      return;
+    }
+
     try {
       setIsLoadingPublicSettings(true);
       setAuthError(null);
-      
+
       // First, check app public settings (with token if available)
       // This will tell us if auth is required, user not registered, etc.
       const appClient = createAxiosClient({
