@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import RevealWrap from "@/components/elite/RevealWrap";
+import teamMeetingImage from "@/assets/team-meeting.jpg";
 
 const STATS = [
   { value: "200", suffix: "+", label: "Businesses Served", sub: "across 15 industries" },
@@ -44,6 +45,16 @@ function Counter({ value, suffix, delay }) {
 export default function Stats() {
   return (
     <section className="relative py-28 md:py-36 bg-void overflow-hidden">
+      {/* Ambient boardroom photograph — faint texture, not a focal point */}
+      <div className="absolute inset-0 pointer-events-none">
+        <img
+          src={teamMeetingImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.14] grayscale contrast-125 animate-ken-burns"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-void via-void/80 to-void" />
+        <div className="absolute inset-0 bg-void/40" />
+      </div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(46,99,255,0.05)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute inset-0 scanline opacity-20 pointer-events-none" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">

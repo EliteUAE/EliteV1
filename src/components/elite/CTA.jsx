@@ -2,10 +2,21 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 import RevealWrap from "@/components/elite/RevealWrap";
+import skyscrapersImage from "@/assets/skyscrapers.jpg";
 
 export default function CTA({ onBooking }) {
   return (
     <section className="relative py-28 md:py-44 bg-void overflow-hidden">
+      {/* Ambient skyline photograph — faint architectural texture */}
+      <div className="absolute inset-0 pointer-events-none">
+        <img
+          src={skyscrapersImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-[0.16] grayscale-[40%] contrast-[1.15] animate-ken-burns"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/85 to-void/60" />
+      </div>
+
       {/* Heavy aurora burst */}
       <motion.div
         animate={{ x: [0, 50, -30, 0], y: [0, -40, 20, 0], scale: [1, 1.2, 0.9, 1] }}

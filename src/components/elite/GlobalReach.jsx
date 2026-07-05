@@ -1,6 +1,7 @@
 import React from "react";
 import RevealWrap from "@/components/elite/RevealWrap";
 import { motion } from "framer-motion";
+import worldMapImage from "@/assets/world-map.jpg";
 
 const LOCATIONS = [
   { city: "USA", country: "Global Headquarters", region: "Global HQ", dot: { top: "42%", left: "22%" } },
@@ -40,112 +41,49 @@ export default function GlobalReach() {
           </RevealWrap>
 
           <RevealWrap direction="right" delay={0.15}>
-            {/* Decorative globe-like visual */}
-            <div className="relative aspect-square max-w-[560px] mx-auto">
-              {/* Ambient gradient-mesh glow filling the space around the rings */}
-              <div className="absolute -inset-16 rounded-full bg-[radial-gradient(circle,rgba(46,99,255,0.16)_0%,transparent_65%)] blur-2xl pointer-events-none" />
-              <div className="absolute -inset-10 rounded-full bg-[radial-gradient(circle_at_65%_60%,rgba(18,184,134,0.14)_0%,transparent_60%)] blur-2xl pointer-events-none" />
-
-              <div className="absolute inset-0 rounded-full border border-white/[0.05]" />
-              <div className="absolute inset-[12%] rounded-full border border-electric/[0.08]" />
-              <div className="absolute inset-[24%] rounded-full border border-white/[0.04]" />
-              <div className="absolute inset-[36%] rounded-full border border-electric/[0.06]" />
-
-              {/* Fine dot-grid texture for a data-viz feel */}
-              <div
-                className="absolute inset-[8%] rounded-full opacity-[0.35]"
-                style={{
-                  backgroundImage: "radial-gradient(rgba(91,140,255,0.35) 1px, transparent 1px)",
-                  backgroundSize: "18px 18px",
-                  maskImage: "radial-gradient(circle, black 55%, transparent 75%)",
-                  WebkitMaskImage: "radial-gradient(circle, black 55%, transparent 75%)",
-                }}
+            <div className="relative max-w-[600px] mx-auto">
+              {/* Ambient lights glowing behind the map card */}
+              <motion.div
+                animate={{ opacity: [0.5, 0.9, 0.5], scale: [1, 1.08, 1] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-16 -left-16 w-56 h-56 bg-electric/25 rounded-full blur-3xl pointer-events-none"
+              />
+              <motion.div
+                animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.1, 1] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="absolute -bottom-14 -right-10 w-64 h-64 bg-emerald/20 rounded-full blur-3xl pointer-events-none"
+              />
+              <motion.div
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+                className="absolute top-1/3 right-0 w-32 h-32 bg-[#F5B042]/20 rounded-full blur-3xl pointer-events-none"
               />
 
-              {/* Stylized dotted landmasses under the pins — reads as a world map, not literal cartography */}
-              <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full opacity-90">
-                <defs>
-                  <pattern id="mapDots" width="3.2" height="3.2" patternUnits="userSpaceOnUse">
-                    <circle cx="1" cy="1" r="0.55" fill="#5B8CFF" fillOpacity="0.55" />
-                  </pattern>
-                </defs>
-                {/* North America — hosts the USA hub */}
-                <path
-                  d="M4,24 Q10,14 22,15 Q32,16 34,26 Q36,35 30,42 Q26,50 17,49 Q7,46 4,36 Q2,30 4,24 Z"
-                  fill="url(#mapDots)"
+              {/* Framed satellite map card */}
+              <div className="relative rounded-[28px] overflow-hidden glass card-glow aspect-[3/2] group">
+                <img
+                  src={worldMapImage}
+                  alt="Elite Partners global hub map — USA, UAE, Egypt"
+                  className="absolute inset-0 w-full h-full object-cover contrast-[1.05] saturate-[1.1] group-hover:scale-[1.04] transition-transform duration-1000 ease-out"
                 />
-                {/* Europe / Middle East / North Africa landmass — hosts UAE + Egypt */}
-                <path
-                  d="M42,14 Q52,8 62,12 Q72,15 76,24 Q80,32 74,38 Q78,46 70,54 Q62,61 52,58 Q44,55 41,46 Q36,38 39,28 Q37,20 42,14 Z"
-                  fill="url(#mapDots)"
-                />
-              </svg>
+                {/* Brand tint wash, kept light so labels stay legible */}
+                <div className="absolute inset-0 bg-gradient-to-br from-electric/15 via-transparent to-emerald/10 mix-blend-color" />
+                <div className="absolute inset-0 bg-gradient-to-t from-void/30 via-transparent to-void/10" />
+                <div className="absolute inset-0 rounded-[28px] ring-1 ring-inset ring-white/[0.08]" />
 
-              {/* Center glow */}
-              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Scanning sweep for a live-data feel */}
                 <motion.div
-                  animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-24 h-24 rounded-full bg-[radial-gradient(circle,rgba(46,99,255,0.3)_0%,transparent_70%)]"
+                  animate={{ top: ["-10%", "110%"] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+                  className="absolute left-0 right-0 h-24 bg-gradient-to-b from-transparent via-electric-light/10 to-transparent pointer-events-none"
                 />
               </div>
 
-              {/* Flight-path connections from the USA HQ hub to every other office */}
-              <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full overflow-visible">
-                <defs>
-                  <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#5B8CFF" />
-                    <stop offset="100%" stopColor="#3DDC9B" />
-                  </linearGradient>
-                </defs>
-                {[
-                  "M22,42 Q43,23 64,40",
-                  "M22,42 Q36,34 50,50",
-                ].map((d, i) => (
-                  <g key={i}>
-                    <path d={d} fill="none" stroke="url(#routeGradient)" strokeWidth="0.3" strokeOpacity="0.25" />
-                    <motion.path
-                      d={d}
-                      fill="none"
-                      stroke="url(#routeGradient)"
-                      strokeWidth="0.5"
-                      strokeLinecap="round"
-                      strokeDasharray="3 7"
-                      animate={{ strokeDashoffset: [0, -20] }}
-                      transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: i * 0.4 }}
-                    />
-                  </g>
-                ))}
-              </svg>
-
-              {/* Location dots */}
-              {LOCATIONS.map((loc, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.5 + i * 0.15, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute group cursor-default"
-                  style={loc.dot}
-                >
-                  <div className="relative">
-                    <motion.div
-                      animate={{ scale: [1, 2, 1], opacity: [0.6, 0, 0.6] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.4 }}
-                      className="absolute inset-0 w-3 h-3 rounded-full bg-electric"
-                    />
-                    <div className="w-3 h-3 rounded-full bg-electric-light shadow-[0_0_12px_rgba(46,99,255,0.6)]" />
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <span className="text-[11px] font-medium text-electric-pale bg-elevated px-2 py-1 rounded">{loc.city}</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-              {/* Spin ring */}
+              {/* Spin ring accent */}
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-[6%] rounded-full border border-dashed border-white/[0.06]"
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-4 rounded-[32px] border border-dashed border-white/[0.06] pointer-events-none"
               />
             </div>
           </RevealWrap>
