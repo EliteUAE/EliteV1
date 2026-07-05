@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import RevealWrap from "@/components/elite/RevealWrap";
 
@@ -14,18 +14,29 @@ export default function PhotoBand({
   ctaLabel,
   bg = "bg-void",
 }) {
+  const frameRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: frameRef,
+    offset: ["start end", "end start"],
+  });
+
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.16, 1.06, 1.16]);
+
   return (
     <section className={`relative py-24 md:py-32 ${bg} overflow-hidden`}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
           <RevealWrap direction={reverse ? "right" : "left"}>
-            <div className="relative rounded-[28px] overflow-hidden glass card-glow group aspect-[4/3]">
-              <img
+            <div ref={frameRef} className="relative rounded-[28px] overflow-hidden glass card-glow aspect-[4/3]">
+              <motion.img
+                style={{ y: imageY, scale: imageScale }}
                 src={image}
                 alt=""
-                className="absolute inset-0 w-full h-full object-cover grayscale-[25%] contrast-[1.08] group-hover:scale-[1.06] transition-transform duration-1000 ease-out animate-ken-burns"
+                className="absolute inset-0 w-full h-full object-cover grayscale-[25%] contrast-[1.08]"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-electric/20 via-transparent to-emerald/15 mix-blend-color" />
+              {/* Brand duotone wash — matches the hero photograph treatment */}
+              <div className="absolute inset-0 bg-gradient-to-br from-electric/25 via-transparent to-emerald/20 mix-blend-color" />
               <div className="absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent" />
               <div className="absolute inset-0 rounded-[28px] ring-1 ring-inset ring-white/[0.08]" />
               {/* corner glow */}

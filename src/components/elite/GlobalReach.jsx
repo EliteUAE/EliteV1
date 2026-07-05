@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import RevealWrap from "@/components/elite/RevealWrap";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import worldMapImage from "@/assets/world-map.jpg";
 
 const LOCATIONS = [
@@ -10,6 +10,13 @@ const LOCATIONS = [
 ];
 
 export default function GlobalReach() {
+  const frameRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: frameRef,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+
   return (
     <section id="global" className="relative py-28 md:py-36 bg-void overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(26,68,209,0.07)_0%,transparent_70%)] pointer-events-none" />
@@ -60,11 +67,12 @@ export default function GlobalReach() {
               />
 
               {/* Framed satellite map card */}
-              <div className="relative rounded-[28px] overflow-hidden glass card-glow aspect-[3/2] group">
-                <img
+              <div ref={frameRef} className="relative rounded-[28px] overflow-hidden glass card-glow aspect-[3/2]">
+                <motion.img
+                  style={{ y: imageY }}
                   src={worldMapImage}
                   alt="Elite Partners global hub map — USA, UAE, Egypt"
-                  className="absolute inset-0 w-full h-full object-cover contrast-[1.05] saturate-[1.1] group-hover:scale-[1.04] transition-transform duration-1000 ease-out"
+                  className="absolute inset-0 w-full h-full object-cover contrast-[1.05] saturate-[1.1] scale-110"
                 />
                 {/* Brand tint wash, kept light so labels stay legible */}
                 <div className="absolute inset-0 bg-gradient-to-br from-electric/15 via-transparent to-emerald/10 mix-blend-color" />

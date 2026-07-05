@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import RevealWrap from "@/components/elite/RevealWrap";
 import teamMeetingImage from "@/assets/team-meeting.jpg";
 
@@ -43,14 +44,22 @@ function Counter({ value, suffix, delay }) {
 }
 
 export default function Stats() {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-9%", "9%"]);
+
   return (
-    <section className="relative py-28 md:py-36 bg-void overflow-hidden">
+    <section ref={sectionRef} className="relative py-28 md:py-36 bg-void overflow-hidden">
       {/* Ambient boardroom photograph — faint texture, not a focal point */}
       <div className="absolute inset-0 pointer-events-none">
-        <img
+        <motion.img
+          style={{ y: imageY }}
           src={teamMeetingImage}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.14] grayscale contrast-125 animate-ken-burns"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.14] grayscale contrast-125 scale-125"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-void via-void/80 to-void" />
         <div className="absolute inset-0 bg-void/40" />

@@ -1,18 +1,26 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 import RevealWrap from "@/components/elite/RevealWrap";
 import skyscrapersImage from "@/assets/skyscrapers.jpg";
 
 export default function CTA({ onBooking }) {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-9%", "9%"]);
+
   return (
-    <section className="relative py-28 md:py-44 bg-void overflow-hidden">
+    <section ref={sectionRef} className="relative py-28 md:py-44 bg-void overflow-hidden">
       {/* Ambient skyline photograph — faint architectural texture */}
       <div className="absolute inset-0 pointer-events-none">
-        <img
+        <motion.img
+          style={{ y: imageY }}
           src={skyscrapersImage}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-[0.16] grayscale-[40%] contrast-[1.15] animate-ken-burns"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-[0.16] grayscale-[40%] contrast-[1.15] scale-125"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-void via-void/85 to-void/60" />
       </div>

@@ -165,7 +165,7 @@ export default function Hero({ onBooking }) {
       {/* ── Content ── */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-10 pb-16 md:pb-24 pt-32 md:pt-40"
+        className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-10 pb-8 md:pb-12 pt-32 md:pt-40"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
