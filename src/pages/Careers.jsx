@@ -9,8 +9,7 @@ import Footer from "@/components/elite/Footer";
 import BookingModal from "@/components/elite/BookingModal";
 import ApplicationForm from "@/components/elite/ApplicationForm";
 import RevealWrap from "@/components/elite/RevealWrap";
-
-const CAREERS_HERO = "https://media.db.com/images/public/6a4321e700517b6f8766408e/e67dfb084_generated_image.png";
+import CAREERS_HERO from "@/assets/team-meeting.jpg";
 
 const VALUES = [
   { icon: Users, title: "One Team, Global Reach", desc: "Work alongside talented professionals across the USA, UAE, and Egypt. Collaborate across cultures, time zones, and disciplines on projects that matter." },
