@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, TrendingUp, Globe, Zap, Users, Code2, BarChart3, Headphones } from "lucide-react";
+import { TrendingUp, Code2, BarChart3, Headphones } from "lucide-react";
 import RevealWrap from "@/components/elite/RevealWrap";
 
 const SERVICES = [
@@ -32,16 +32,8 @@ const SERVICES = [
     title: "Lead Generation",
     subtitle: "Full-funnel Pipeline",
     desc: "Cold outreach, warm follow-up, CRM management, and appointment setting — we fill your calendar.",
-    span: "",
-    accent: "from-[#059669]/15 to-transparent",
-  },
-  {
-    icon: Globe,
-    title: "Global Operations",
-    subtitle: "3 Continents",
-    desc: "Offshore teams in strategic time zones. Follow-the-sun coverage so you're never off.",
     span: "lg:col-span-2",
-    accent: "from-[#2E63FF]/10 to-transparent",
+    accent: "from-[#059669]/15 to-transparent",
   },
 ];
 
