@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Calendar, ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-handshake.png";
+import heroImage from "@/assets/hero-handshake.jpg";
 
 const metrics = [
   { value: "200", suffix: "+", label: "Businesses Served" },
@@ -50,12 +50,12 @@ export default function Hero({ onBooking }) {
   const contentY = useTransform(scrollY, [0, 600], [0, 80]);
   const contentOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-  // Ambient hero photograph — dissolves into the aurora as the user scrolls past
+  // Ambient hero photograph — dissolves into the aurora as the user scrolls past.
+  // Driven only by cheap, GPU-compositable transforms (opacity/scale/translate) —
+  // an animated CSS blur() filter here would force a full repaint every scroll frame.
   const imageOpacity = useTransform(scrollY, [0, 550], [0.55, 0]);
   const imageScale = useTransform(scrollY, [0, 550], [1, 1.22]);
   const imageY = useTransform(scrollY, [0, 550], [0, -70]);
-  const imageBlurPx = useTransform(scrollY, [0, 550], [0, 22]);
-  const imageFilter = useTransform(imageBlurPx, (v) => `blur(${v}px)`);
 
   // Futuristic scan-wipe that sweeps down and erases the photo as it dissolves
   const sweepTop = useTransform(scrollY, [0, 600], ["-5%", "105%"]);
@@ -75,7 +75,7 @@ export default function Hero({ onBooking }) {
         className="absolute inset-0 pointer-events-none"
       >
         <motion.div
-          style={{ opacity: imageOpacity, scale: imageScale, y: imageY, filter: imageFilter }}
+          style={{ opacity: imageOpacity, scale: imageScale, y: imageY }}
           className="absolute inset-0 overflow-hidden"
         >
           <img
