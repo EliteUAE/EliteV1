@@ -19,7 +19,7 @@ export default function About({ onBooking }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center">
           <RevealWrap direction="left">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-2 h-2 rounded-full bg-electric animate-pulse-electric" />
+              <div className="w-2 h-2 rounded-full bg-electric animate-pulse" />
               <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-electric-light">
                 Who We Are
               </span>
