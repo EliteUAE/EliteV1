@@ -39,7 +39,7 @@ const SERVICES = [
 
 export default function Services({ onBooking }) {
   return (
-    <section id="services" className="relative py-28 md:py-36 bg-surface overflow-hidden">
+    <section id="services" className="relative py-20 md:py-28 bg-surface overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(26,68,209,0.08)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">

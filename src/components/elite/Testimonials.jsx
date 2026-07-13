@@ -30,7 +30,7 @@ export default function Testimonials() {
   const next = () => setIdx((i) => (i + 1) % TESTIMONIALS.length);
 
   return (
-    <section className="relative py-28 md:py-36 bg-void overflow-hidden">
+    <section className="relative py-20 md:py-28 bg-void overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(46,99,255,0.05)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[900px] mx-auto px-6 md:px-10 text-center">

@@ -18,7 +18,7 @@ export default function GlobalReach() {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
-    <section id="global" className="relative py-28 md:py-36 bg-void overflow-hidden">
+    <section id="global" className="relative py-20 md:py-28 bg-void overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(26,68,209,0.07)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">

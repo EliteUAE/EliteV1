@@ -12,10 +12,12 @@ module.exports = {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-  			// Deep charcoal enterprise palette
-  			void: '#0A0A0D',
-  			surface: '#111116',
-  			elevated: '#17171E',
+  			// Deep navy enterprise palette — lighter & more blue than the old
+  			// near-black charcoal, and spaced further apart so alternating
+  			// section backgrounds actually read as distinct, not one black slab.
+  			void: '#0B0F1C',
+  			surface: '#151C31',
+  			elevated: '#1E2745',
   			electric: '#2E63FF',
   			'electric-light': '#5B8CFF',
   			'electric-pale': '#A9C4FF',

@@ -13,7 +13,7 @@ export default function CTA({ onBooking }) {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-9%", "9%"]);
 
   return (
-    <section ref={sectionRef} className="relative py-28 md:py-44 bg-void overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 md:py-32 bg-void overflow-hidden">
       {/* Ambient skyline photograph — faint architectural texture */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.img

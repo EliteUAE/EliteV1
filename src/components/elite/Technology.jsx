@@ -9,7 +9,7 @@ const TECHS = [
 
 export default function Technology() {
   return (
-    <section className="relative py-28 md:py-36 bg-surface overflow-hidden">
+    <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <RevealWrap className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-4">

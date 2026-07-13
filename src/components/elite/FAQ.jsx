@@ -63,7 +63,7 @@ function FAQItem({ q, a, open, onToggle }) {
 export default function FAQ() {
   const [open, setOpen] = useState(0);
   return (
-    <section className="relative py-28 md:py-36 bg-surface overflow-hidden">
+    <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
       <div className="max-w-[800px] mx-auto px-6 md:px-10">
         <RevealWrap className="text-center mb-14">
           <div className="inline-flex items-center gap-3 mb-4">

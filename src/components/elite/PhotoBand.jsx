@@ -24,7 +24,7 @@ export default function PhotoBand({
   const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.16, 1.06, 1.16]);
 
   return (
-    <section className={`relative py-24 md:py-32 ${bg} overflow-hidden`}>
+    <section className={`relative py-16 md:py-24 ${bg} overflow-hidden`}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
           <RevealWrap direction={reverse ? "right" : "left"}>

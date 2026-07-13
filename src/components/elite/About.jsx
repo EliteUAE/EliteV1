@@ -11,7 +11,7 @@ const PILLARS = [
 
 export default function About({ onBooking }) {
   return (
-    <section id="about" className="relative pt-14 pb-28 md:pt-20 md:pb-36 bg-void overflow-hidden">
+    <section id="about" className="relative pt-14 pb-20 md:pt-16 md:pb-24 bg-void overflow-hidden">
       {/* Subtle electric glow */}
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse,rgba(46,99,255,0.06)_0%,transparent_70%)] pointer-events-none" />
 

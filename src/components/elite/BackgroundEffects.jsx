@@ -54,7 +54,7 @@ function ParticleCanvas() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.8 }}
     />
   );
 }
@@ -71,8 +71,8 @@ function LightBeam({ delay = 0, fromLeft = true }) {
         width: "60%",
         height: "100vh",
         background: fromLeft
-          ? "linear-gradient(105deg, transparent 40%, rgba(46,99,255,0.03) 50%, transparent 60%)"
-          : "linear-gradient(75deg, transparent 40%, rgba(26,68,209,0.04) 50%, transparent 60%)",
+          ? "linear-gradient(105deg, transparent 40%, rgba(91,140,255,0.06) 50%, transparent 60%)"
+          : "linear-gradient(75deg, transparent 40%, rgba(61,220,155,0.05) 50%, transparent 60%)",
         filter: "blur(2px)",
       }}
       animate={{ x: fromLeft ? ["0%", "180%", "0%"] : ["0%", "-180%", "0%"] }}

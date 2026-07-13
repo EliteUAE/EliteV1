@@ -5,7 +5,6 @@ import Marquee from "@/components/elite/Marquee";
 import About from "@/components/elite/About";
 import PhotoBand from "@/components/elite/PhotoBand";
 import Services from "@/components/elite/Services";
-import Stats from "@/components/elite/Stats";
 import Process from "@/components/elite/Process";
 import GlobalReach from "@/components/elite/GlobalReach";
 import Industries from "@/components/elite/Industries";
@@ -43,7 +42,6 @@ export default function Home() {
         ctaLabel="See Our Process"
       />
       <Services onBooking={openBooking} />
-      <Stats />
       <Process onBooking={openBooking} />
       <PhotoBand
         image={presenterImage}

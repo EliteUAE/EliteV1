@@ -48,7 +48,7 @@
   }
   body {
     @apply bg-void text-platinum font-body;
-    background-color: #0A0A0D;
+    background-color: #0B0F1C;
     color: #F2F3F5;
     font-family: 'Jost', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -154,7 +154,7 @@
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #0A0A0D; }
+::-webkit-scrollbar-track { background: #0B0F1C; }
 ::-webkit-scrollbar-thumb { background: rgba(46,99,255,0.3); border-radius: 2px; }
 
 /* ── Reduced motion ── */
@@ -175,8 +175,8 @@
 /* ── Radial spotlight ── */
 .spotlight {
   background: radial-gradient(ellipse 60% 40% at 50% 50%,
-    rgba(46,99,255,0.14) 0%,
-    rgba(18,184,134,0.05) 40%,
+    rgba(46,99,255,0.22) 0%,
+    rgba(18,184,134,0.09) 40%,
     transparent 70%);
   pointer-events: none;
 }
