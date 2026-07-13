@@ -60,17 +60,22 @@
 }
 
 /* ── Glass card ── */
+/* Backdrop blur is one of the most expensive things a browser composites,
+   and this "glass" treatment is used on cards across nearly every section —
+   dozens of instances on one page. Halving the radius keeps the frosted
+   look while cutting that cost substantially (a big share of the reported
+   scroll lag). */
 .glass {
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px) saturate(1.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
   border: 1px solid rgba(255,255,255,0.07);
 }
 
 .glass-brand {
   background: linear-gradient(135deg, rgba(46,99,255,0.08) 0%, rgba(18,184,134,0.05) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(46,99,255,0.2);
 }
 
@@ -165,11 +170,11 @@
   }
 }
 
-/* ── Motion blur blobs ── */
+/* ── Aurora glow blobs — static now (see Hero.jsx), so will-change/blur
+   only ever costs one paint instead of one every animation frame ── */
 .blob-blur {
-  filter: blur(90px) saturate(1.4);
+  filter: blur(60px) saturate(1.4);
   mix-blend-mode: screen;
-  will-change: transform;
 }
 
 /* ── Radial spotlight ── */

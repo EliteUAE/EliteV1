@@ -49,22 +49,11 @@ export default function GlobalReach() {
 
           <RevealWrap direction="right" delay={0.15}>
             <div className="relative max-w-[600px] mx-auto">
-              {/* Ambient lights glowing behind the map card */}
-              <motion.div
-                animate={{ opacity: [0.5, 0.9, 0.5], scale: [1, 1.08, 1] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-16 -left-16 w-56 h-56 bg-electric/25 rounded-full blur-3xl pointer-events-none"
-              />
-              <motion.div
-                animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.1, 1] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute -bottom-14 -right-10 w-64 h-64 bg-emerald/20 rounded-full blur-3xl pointer-events-none"
-              />
-              <motion.div
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                className="absolute top-1/3 right-0 w-32 h-32 bg-[#F5B042]/20 rounded-full blur-3xl pointer-events-none"
-              />
+              {/* Ambient lights glowing behind the map card — static; these
+                  three were pulsing forever regardless of scroll position */}
+              <div className="absolute -top-16 -left-16 w-56 h-56 bg-electric/30 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-14 -right-10 w-64 h-64 bg-emerald/25 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-1/3 right-0 w-32 h-32 bg-[#F5B042]/25 rounded-full blur-3xl pointer-events-none" />
 
               {/* Framed satellite map card */}
               <div ref={frameRef} className="relative rounded-[28px] overflow-hidden glass card-glow aspect-[3/2]">

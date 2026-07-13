@@ -39,12 +39,10 @@ export default function PhotoBand({
               <div className="absolute inset-0 bg-gradient-to-br from-electric/25 via-transparent to-emerald/20 mix-blend-color" />
               <div className="absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent" />
               <div className="absolute inset-0 rounded-[28px] ring-1 ring-inset ring-white/[0.08]" />
-              {/* corner glow */}
-              <motion.div
-                animate={{ opacity: [0.3, 0.7, 0.3] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-10 -right-10 w-40 h-40 bg-electric/30 rounded-full blur-3xl pointer-events-none"
-              />
+              {/* corner glow — static; this rendered twice per page (About
+                  + GlobalReach photo bands) and was animating forever even
+                  when scrolled out of view */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-electric/40 rounded-full blur-3xl pointer-events-none" />
             </div>
           </RevealWrap>
 

@@ -13,7 +13,7 @@ export default function CTA({ onBooking }) {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-9%", "9%"]);
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 bg-void overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 md:py-32 bg-void overflow-hidden noise-overlay">
       {/* Ambient skyline photograph — faint architectural texture */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.img
@@ -25,25 +25,12 @@ export default function CTA({ onBooking }) {
         <div className="absolute inset-0 bg-gradient-to-t from-void via-void/85 to-void/60" />
       </div>
 
-      {/* Heavy aurora burst */}
-      <motion.div
-        animate={{ x: [0, 50, -30, 0], y: [0, -40, 20, 0], scale: [1, 1.2, 0.9, 1] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="aurora-blob blob-blur w-[700px] h-[700px] bg-[#1A44D1]/25"
-        style={{ top: "-30%", left: "-15%" }}
-      />
-      <motion.div
-        animate={{ x: [0, -40, 30, 0], y: [0, 50, -20, 0], scale: [1, 0.85, 1.1, 1] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-        className="aurora-blob blob-blur w-[600px] h-[600px] bg-[#2E63FF]/20"
-        style={{ bottom: "-20%", right: "-10%" }}
-      />
-      <motion.div
-        animate={{ x: [0, 30, -20, 0], y: [0, -30, 40, 0] }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 6 }}
-        className="aurora-blob blob-blur w-[400px] h-[400px] bg-[#6B21A8]/18"
-        style={{ top: "30%", right: "20%" }}
-      />
+      {/* Aurora glow — static; an infinitely-animating blurred blob keeps
+          costing CPU/GPU the whole time the page is open even when this
+          section is scrolled far out of view, which added up across the
+          several sections that each had 3-4 of these running at once. */}
+      <div className="aurora-blob blob-blur w-[700px] h-[700px] bg-[#1A44D1]/22" style={{ top: "-30%", left: "-15%" }} />
+      <div className="aurora-blob blob-blur w-[600px] h-[600px] bg-[#2E63FF]/18" style={{ bottom: "-20%", right: "-10%" }} />
 
       {/* Central spotlight */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(46,99,255,0.08)_0%,transparent_70%)]" />

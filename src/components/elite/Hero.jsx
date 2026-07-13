@@ -44,9 +44,6 @@ function AnimatedCounter({ value, suffix, delay }) {
 export default function Hero({ onBooking }) {
   const containerRef = useRef(null);
   const { scrollY } = useScroll();
-  const blob1Y = useTransform(scrollY, [0, 600], [0, -120]);
-  const blob2Y = useTransform(scrollY, [0, 600], [0, -80]);
-  const blob3Y = useTransform(scrollY, [0, 600], [0, -50]);
   const contentY = useTransform(scrollY, [0, 600], [0, 80]);
   const contentOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
@@ -57,12 +54,8 @@ export default function Hero({ onBooking }) {
   const imageScale = useTransform(scrollY, [0, 550], [1, 1.22]);
   const imageY = useTransform(scrollY, [0, 550], [0, -70]);
 
-  // Futuristic scan-wipe that sweeps down and erases the photo as it dissolves
-  const sweepTop = useTransform(scrollY, [0, 600], ["-5%", "105%"]);
-  const sweepOpacity = useTransform(scrollY, [0, 100, 420, 560], [0, 1, 1, 0]);
-
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-end overflow-hidden bg-void">
+    <section ref={containerRef} className="relative min-h-screen flex items-end overflow-hidden bg-void noise-overlay">
 
       {/* ── Deep background radial ── */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(26,68,209,0.12)_0%,transparent_70%)]" />
@@ -90,69 +83,25 @@ export default function Hero({ onBooking }) {
           {/* Fade into the sections above/below */}
           <div className="absolute inset-0 bg-gradient-to-b from-void/50 via-transparent to-void" />
         </motion.div>
-
-        {/* Futuristic scan-wipe sweeping the photo away */}
-        <motion.div
-          style={{ top: sweepTop, opacity: sweepOpacity }}
-          className="absolute left-0 right-0 h-px z-[1]"
-        >
-          <div className="h-full w-full bg-gradient-to-r from-transparent via-electric-light to-transparent shadow-[0_0_28px_4px_rgba(46,99,255,0.55)]" />
-        </motion.div>
       </motion.div>
 
-      {/* ── Aurora blobs with motion blur ── */}
-      <motion.div style={{ y: blob1Y }}
-        className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{ x: [0, 60, -30, 0], y: [0, -40, 30, 0], scale: [1, 1.15, 0.95, 1] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="aurora-blob blob-blur w-[700px] h-[700px] bg-[#1A44D1]/25"
+      {/* ── Aurora glow — static (was 4 separately-animating blurred blobs
+          plus a scroll-linked parallax wrapper each; that's a lot of
+          continuous compositing work for a decorative background element).
+          A single painted-once gradient reads the same at a glance. ── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="aurora-blob blob-blur w-[700px] h-[700px] bg-[#1A44D1]/20"
           style={{ top: "-15%", left: "-12%" }}
         />
-      </motion.div>
-
-      <motion.div style={{ y: blob2Y }}
-        className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{ x: [0, -50, 40, 0], y: [0, 60, -30, 0], scale: [1, 0.9, 1.1, 1] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-          className="aurora-blob blob-blur w-[600px] h-[600px] bg-[#2E63FF]/18"
-          style={{ top: "5%", right: "-8%" }}
+        <div
+          className="aurora-blob blob-blur w-[600px] h-[600px] bg-[#12B886]/15"
+          style={{ bottom: "0%", right: "-8%" }}
         />
-      </motion.div>
-
-      <motion.div style={{ y: blob3Y }}
-        className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{ x: [0, 30, -20, 0], y: [0, 30, -40, 0], scale: [1, 1.08, 0.98, 1] }}
-          transition={{ duration: 26, repeat: Infinity, ease: "easeInOut", delay: 6 }}
-          className="aurora-blob blob-blur w-[500px] h-[500px] bg-[#12B886]/22"
-          style={{ bottom: "5%", left: "25%" }}
-        />
-        {/* Extra small emerald shimmer blob */}
-        <motion.div
-          animate={{ x: [0, -40, 20, 0], y: [0, -20, 40, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="aurora-blob blob-blur w-[300px] h-[300px] bg-[#3DDC9B]/12"
-          style={{ top: "40%", left: "55%" }}
-        />
-      </motion.div>
+      </div>
 
       {/* ── Spotlight radial at center ── */}
       <div className="absolute inset-0 spotlight" />
-
-      {/* ── Vertical light streaks ── */}
-      {[16, 50, 84].map((left, i) => (
-        <motion.div key={i}
-          animate={{ opacity: [0.3, 0.8, 0.3], scaleY: [0.8, 1.1, 0.8] }}
-          transition={{ duration: 4 + i * 1.5, repeat: Infinity, ease: "easeInOut", delay: i * 1.2 }}
-          className="light-streak"
-          style={{ top: "10%", left: `${left}%`, height: "60%", opacity: 0.3 + i * 0.05 }}
-        />
-      ))}
-
-      {/* ── Horizontal scan lines ── */}
-      <div className="absolute inset-0 scanline opacity-30 pointer-events-none" />
 
       {/* ── Grid lines ── */}
       <div className="absolute inset-0 pointer-events-none">
@@ -173,11 +122,7 @@ export default function Hero({ onBooking }) {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="flex items-center gap-3 mb-8"
         >
-          <motion.div
-            animate={{ width: ["2rem", "3rem", "2rem"] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="h-[0.5px] bg-electric"
-          />
+          <div className="w-8 h-[0.5px] bg-electric" />
           <span className="text-[11px] font-semibold tracking-[0.22em] uppercase text-electric-light">
             Contact Centers · Consulting · Web & IT · Lead Generation
           </span>

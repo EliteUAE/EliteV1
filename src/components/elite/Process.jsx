@@ -11,7 +11,7 @@ const STEPS = [
 
 export default function Process({ onBooking }) {
   return (
-    <section id="process" className="relative py-20 md:py-28 bg-surface overflow-hidden">
+    <section id="process" className="relative py-20 md:py-28 bg-surface overflow-hidden noise-overlay">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(107,33,168,0.07)_0%,transparent_60%)] pointer-events-none" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <RevealWrap className="mb-16">

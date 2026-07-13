@@ -15,7 +15,7 @@ const INDUSTRIES = [
 
 export default function Industries() {
   return (
-    <section id="industries" className="relative py-20 md:py-28 bg-surface overflow-hidden">
+    <section id="industries" className="relative py-20 md:py-28 bg-surface overflow-hidden noise-overlay">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(46,99,255,0.05)_0%,transparent_60%)] pointer-events-none" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <RevealWrap className="text-center mb-16">
