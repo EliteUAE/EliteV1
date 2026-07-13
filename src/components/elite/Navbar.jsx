@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,19 +15,34 @@ const NAV_LINKS = [
 export default function Navbar({ onBooking }) {
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [lastY, setLastY] = useState(0);
+  // lastY only feeds a comparison, not render output — a ref avoids
+  // triggering a re-render on every single scroll tick just to track it.
+  const lastYRef = useRef(0);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
+    // Scroll events can fire many times per animation frame; without this,
+    // every one of them was setting up to 3 pieces of state and forcing a
+    // React re-render of the whole navbar mid-scroll. Coalescing to at most
+    // one state update per rendered frame is what actually eliminates the
+    // stutter — React already bails out of a re-render when a boolean state
+    // value doesn't change, so this also means `scrolled`/`visible` only
+    // ever cause a render at the exact moments they flip.
+    let ticking = false;
     const handleScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 60);
-      setVisible(y < 100 || y < lastY);
-      setLastY(y);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        setScrolled(y > 60);
+        setVisible(y < 100 || y < lastYRef.current);
+        lastYRef.current = y;
+        ticking = false;
+      });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastY]);
+  }, []);
 
   return (
     <>
@@ -39,16 +54,27 @@ export default function Navbar({ onBooking }) {
           opacity: visible ? 1 : 0,
         }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed z-50 left-1/2 transition-all duration-500 ${
+        className={`fixed z-50 left-1/2 ${
           scrolled
             ? "bottom-6 top-auto w-[min(94vw,900px)]"
             : "top-0 bottom-auto w-full"
         }`}
       >
+        {/* Only background/shadow/padding animate here — width, top and
+            bottom above snap instantly on the (rare) moment "scrolled"
+            flips, instead of being tweened via transition-all, which forces
+            the browser to recompute layout on every step of the transition
+            rather than just compositing a transform. */}
         <div
-          className={`flex items-center justify-between transition-all duration-500 ${
+          className={`flex items-center justify-between transition-[background-color,box-shadow,padding] duration-500 ${
             scrolled
-              ? "glass rounded-full px-3 py-2 shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
+              // Solid, not backdrop-blurred — this element is `fixed`, so a
+              // blurred backdrop here has to resample everything scrolling
+              // behind it on every single frame for as long as you're
+              // scrolled past the top of the page. A solid dark fill with a
+              // hairline border reads almost identically at a glance for a
+              // fraction of the cost.
+              ? "bg-[#0B0F1C]/90 border border-white/[0.08] rounded-full px-3 py-2 shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
               : "bg-transparent px-6 md:px-10 py-5"
           }`}
         >
